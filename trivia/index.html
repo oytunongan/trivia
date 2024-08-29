@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function() {
+                let buttonList = document.querySelectorAll("button");
+                for (let i = 0; i < 4; i++) {
+                    if (i != 2) {
+                        buttonList[i].addEventListener('click', function() {
+                            buttonList[i].style.backgroundColor = "red";
+                            document.querySelector("#result1").innerHTML = "Incorrect";
+                        });
+                    }
+                    else if (i == 2) {
+                        buttonList[i].addEventListener('click', function() {
+                            buttonList[i].style.backgroundColor = "green";
+                            document.querySelector("#result1").innerHTML = "Correct";
+                        });
+                    }
+                }
+            });
+            function getAnswer() {
+                let answer = document.querySelector("#answer").value;
+                if (answer == 20000) {
+                    document.querySelector("#answer").style.backgroundColor = "green";
+                    document.querySelector("#result2").innerHTML = "Correct";
+                }
+                else {
+                    document.querySelector("#answer").style.backgroundColor = "red";
+                    document.querySelector("#result2").innerHTML = "Incorrect";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>The wages of 10 workers for a six-day week is $ 1200. What are the one day's wages of 4 workers?</h3>
+                <button id="b1">$40</button>
+                <button id="b2">$32</button>
+                <button id="b3">$80</button>
+                <button id="b4">$24</button>
+                <p id="result1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here 20000-->
+                <h3>How many breaths does the human body take daily?</h3>
+                <form onsubmit="getAnswer(); return false;">
+                    <input id="answer" autocomplete="off" placeholder="Answer" type="text">
+                    <button type="submit">Check Answer</button>
+                </form>
+                <p id="result2"></p>
+            </div>
+        </div>
+    </body>
+</html>
